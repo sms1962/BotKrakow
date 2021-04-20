@@ -1,6 +1,6 @@
 # Twitter token 
 botkrakow_token <- rtweet::create_token(
-  app = "botkrakow",
+  app = "BotKrakow",
   consumer_key =    Sys.getenv("BOTKRAKOW_TWITTER_CONSUMER_API_KEY"),
   consumer_secret = Sys.getenv("BOTKRAKOW_TWITTER_CONSUMER_API_SECRET"),
   access_token =    Sys.getenv("BOTKRAKOW_TWITTER_ACCESS_TOKEN"),
