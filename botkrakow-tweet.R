@@ -33,8 +33,7 @@ download.file(img_url, temp_file)
 
 # Współrzędne punktu i adres do mapy w OpenStreetMaps
 
-latlon_details <- paste0("Współrzędne geograficzne",
-  lat, ", ", lon, "#Kraków" "\n",
+latlon_details <- paste0("Współrzędne geograficzne", lat, ",", lon, "#Kraków", "\n", 
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
