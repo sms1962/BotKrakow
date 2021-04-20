@@ -13,23 +13,26 @@ botkrakow_token <- rtweet::create_token(
 # prawy górny: 50.10115253233459, 20.087548254174763
 
 lon <- round(runif(1, 19.916, 20.087), 4)
-# lon <- format(lon, scientific = FALSE)
+lon <- format(lon, scientific = FALSE)
 lat <- round(runif(1, 50.040, 50.101), 4)
 
 # Adres do MapBox API
-https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
+# https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
+
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
-  paste0("[",lon, ",", lat,"]"),
+  paste0(lon, ",", lat),
   ",15,0/500x350@2x?access_token=",
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
 # Pobranie zdjęcia satelitarnego z MapBox
+
 temp_file <- tempfile()
 download.file(img_url, temp_file)
 
 # Współrzędne punktu i adres do mapy w OpenStreetMaps
+
 latlon_details <- paste0(
   lat, ", ", lon, "\n",
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
