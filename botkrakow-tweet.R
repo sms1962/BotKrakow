@@ -17,9 +17,10 @@ lon <- round(runif(1, 19.916, 20.087), 4)
 lat <- round(runif(1, 50.040, 50.101), 4)
 
 # Adres do MapBox API
+https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
-  paste0(lon, ",", lat),
+  paste0("[",lon, ",", lat,"]"),
   ",15,0/500x350@2x?access_token=",
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
