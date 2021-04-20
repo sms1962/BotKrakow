@@ -7,7 +7,7 @@ botkrakow_token <- rtweet::create_token(
   access_secret =   Sys.getenv("BOTKRAKOW_TWITTER_ACCESS_TOKEN_SECRET")
 )
 
-# Współrzędne punktu w Krakowie 
+# Współrzędne punktu w Krakowie .
 
 # lewy dolny: 50.040055838307936, 19.916281923196617
 # prawy górny: 50.10115253233459, 20.087548254174763
