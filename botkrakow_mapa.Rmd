@@ -1,0 +1,55 @@
+---
+title: "Mapa punktów BotKrakow"
+author: "SMS"
+date: "4/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rtweet)
+library(tidyverse)
+library(leaflet)
+```
+
+## Pobranie twittów @botkrakow
+
+```{r echo=FALSE}
+twity <- get_timeline("botkrakow")
+
+```
+
+
+## ekstrakcja współrzędnych i url zdjęcia satelitarnego
+
+```{r echo=FALSE}
+dt <- twity %>% 
+  select(status_id, created_at, text, ext_media_url) %>% 
+  mutate(lat_lon = str_extract(text, "[:digit:]+\\.[:digit:]+,.?[:digit:]+\\.[:digit:]+")) %>% 
+  separate(lat_lon, into=c("lat","lon"),sep = ",") %>% 
+  mutate(lat = as.numeric(lat), lon = as.numeric(lon)) %>% 
+  mutate(t_url = paste0("https://twitter.com/BotKrakow/status/", status_id))
+```
+
+
+## rysowanie mapy w Leaflet z punktami
+
+```{r echo=FALSE}
+m <- leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>% 
+  # addTiles() %>%  # Add default OpenStreetMap map tiles
+  addCircleMarkers(dt$lon, dt$lat, clusterOptions = markerClusterOptions(), popup = paste0("<img src = ", dt$ext_media_url, " width='200' height='150' />"))
+m  # Print the map
+
+# Tworzenie pliku png
+
+# mapview::mapshot(m, file = "mapa_botkrakow.png", remove_controls = c("zoomControl", "layersControl", "homeButton", "scaleBar","drawToolbar", "easyButton"))
+
+
+```
+## Zapisanie mapy w png
+
+```{r}
+mapview::mapshot(m, url = "_site/index.html")
+```
+
