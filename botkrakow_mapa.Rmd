@@ -39,7 +39,7 @@ m <- leaflet() %>%
   addProviderTiles(providers$Stamen.TonerLite) %>% 
   # addTiles() %>%  # Add default OpenStreetMap map tiles
   addCircleMarkers(dt$lon, dt$lat, clusterOptions = markerClusterOptions(), 
-                   popup = paste0("<img src = ", dt$ext_media_url, " width='600' height='480' />"))
+                   popup = paste0("<img src = ", dt$ext_media_url, " width='200' height='150' />"))
 m  # Print the map
 
 # Tworzenie pliku png
