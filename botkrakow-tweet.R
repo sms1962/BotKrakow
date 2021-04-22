@@ -9,13 +9,13 @@ botkrakow_token <- rtweet::create_token(
 
 # Współrzędne punktu w Krakowie .
 
-# lewy dolny: 50.040055838307936, 19.916281923196617
-# prawy górny: 50.10115253233459, 20.087548254174763
+# lewy dolny: 49.964621202787704, 19.768131568180056
+# prawy górny: 50.14098957526662, 20.21510990888496
 
-lon <- round(runif(1, 19.916, 20.087), 4)
+lon <- round(runif(1, 19.768, 20.215), 4)
 lon <- format(lon, scientific = FALSE)
-lat <- round(runif(1, 50.040, 50.101), 4)
-
+lat <- round(runif(1, 49.964, 50.140), 4)
+lat <- format(lat, scientific = FALSE)
 # Adres do MapBox API
 # https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
 
@@ -33,7 +33,7 @@ download.file(img_url, temp_file)
 
 # Współrzędne punktu i adres do mapy w OpenStreetMaps
 
-latlon_details <- paste0("Współrzędne geograficzne: ", lat, ",", lon, " #Kraków", "\n", 
+latlon_details <- paste0("Jestem botem, który co ca. 30 min. wybiera losowo punkt w #Krakow.ie i pobiera zdjęcie satelitarne okolic. Poniżej pkt o współ.: ", lat, ",", lon, "\n", "Jeśli nie poznajesz, to zobacz na mapie. ",
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
