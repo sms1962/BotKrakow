@@ -1,8 +1,9 @@
-name: bwez_twity
+name: wez_twity
 
 on:
-  schedule:
-    - cron: '15 * * * *'
+  push:
+#  schedule:
+#    - cron: '15 * * * *'
 
 jobs:
   weztwity_krakowbott:
