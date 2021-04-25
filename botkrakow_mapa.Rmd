@@ -16,7 +16,7 @@ library(mapview)
 ## Pobranie twittów @botkrakow
 
 ```{r echo=FALSE}
-twity <- get_timeline("botkrakow")
+twity <- get_timeline("botkrakow", n=1000)
 
 ```
 
