@@ -1,11 +1,11 @@
-name: botkrakow
+name: bwez_twity
 
 on:
   schedule:
-    - cron: '25,55 * * * *'
+    - cron: '15 * * * *'
 
 jobs:
-  krakowbot-post:
+  weztwity_krakowbott:
     runs-on: macOS-latest
     env:
       TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
@@ -18,5 +18,5 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
-      - name: Create and post tweet
-        run: Rscript botkrakow-tweet.R
+      - name: Pobranie twittow
+        run: Rscript weztwity.R
