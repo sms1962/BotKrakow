@@ -10,6 +10,8 @@ botkrakow_token <- rtweet::create_token(
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
-df <- get_timeline(user = "botkrakow", token = botkrakow_token)
+df <- get_timeline(user = "botkrakow", n=50, token = botkrakow_token)
 
-saveRDS(df,"./data/botkrakow_twity.RDS")
+nazwa <- paste0("./data/botkrakow_twity_",Sys.Date(), ".RDS")
+
+saveRDS(df, file = nazwa)

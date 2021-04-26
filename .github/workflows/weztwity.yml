@@ -1,10 +1,8 @@
 name: wez_twity
 
 on:
-  push:
-#  schedule:
-#    - cron: '15 * * * *'
-
+ schedule:
+   - cron: '45 23 * * *'
 
 jobs:
   weztwity_krakowbott:
@@ -27,3 +25,4 @@ jobs:
           git add -A
           git commit -m 'Zapisanie danych' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
+          
