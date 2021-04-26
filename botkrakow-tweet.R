@@ -12,9 +12,9 @@ botkrakow_token <- rtweet::create_token(
 # lewy dolny: 49.964621202787704, 19.768131568180056
 # prawy górny: 50.14098957526662, 20.21510990888496
 
-lon <- round(runif(1, 19.768, 20.215), 4)
+lon <- round(runif(1, 19.792, 20.217), 4)
 lon <- format(lon, scientific = FALSE)
-lat <- round(runif(1, 49.964, 50.140), 4)
+lat <- round(runif(1, 49.967, 50.126), 4)
 lat <- format(lat, scientific = FALSE)
 # Adres do MapBox API
 # https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
