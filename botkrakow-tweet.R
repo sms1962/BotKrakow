@@ -23,7 +23,7 @@ lat <- format(lat, scientific = FALSE)
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
   paste0(lon, ",", lat),
-  ",15,0/600x400?access_token=",
+  ",15,0/1200x675?access_token=",
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
