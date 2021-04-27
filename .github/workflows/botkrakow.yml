@@ -18,9 +18,9 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
-      - name Install tidyverse package
+      - name: Install tidyverse package
         run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
-      - name Install lubridate package
+      - name: Install lubridate package
         run: Rscript -e 'install.packages("lubridate", dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript botkrakow-tweet.R
