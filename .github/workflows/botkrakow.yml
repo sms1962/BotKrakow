@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '25,55 * * * *'
 
+
 jobs:
   krakowbot-post:
     runs-on: macOS-latest
@@ -18,5 +19,16 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Install tidyverse package
+        run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
+      - name: Install lubridate package
+        run: Rscript -e 'install.packages("lubridate", dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript botkrakow-tweet.R
+      - name: archiwum twitow
+        run: Rscript archiwum_twitow.R
+      - name: Commit plików
+        run: |
+          git add -A
+          git commit -m 'Zapisanie nowych twitow' || echo "Zapisanie nowych twitow"
+          git push origin || echo "Zapisuje nowe twity"
