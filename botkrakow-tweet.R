@@ -19,10 +19,11 @@ lat <- format(lat, scientific = FALSE)
 # Adres do MapBox API
 # https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
 
+# po 600x400 dodany był @2x
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
   paste0(lon, ",", lat),
-  ",15,0/600x400@2x?access_token=",
+  ",15,0/600x400?access_token=",
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
 
