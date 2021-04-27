@@ -31,7 +31,7 @@ df_dzisiejsze <- df %>%
 
 # pobranie aktualnego loga
 
-log_data <- read_csv("data/archiwum_twitow.csv", 
+log_data <- read_csv("./data/archiwum_twitow.csv", 
                    col_types = cols(user_id = col_character(), 
                                     status_id = col_character(), created_at = col_character(),
                                     favorite_count = col_character(), retweet_count = col_character(),
