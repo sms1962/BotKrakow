@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '25,55 * * * *'
 
+
 jobs:
   krakowbot-post:
     runs-on: macOS-latest
