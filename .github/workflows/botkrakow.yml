@@ -1,12 +1,16 @@
 name: botkrakow
 
 on:
+  push:
+    branches:
+      - master
+      - main
   schedule:
-    - cron: '25,55 * * * *'
+    - cron: '10 * * * *'
 
 jobs:
   krakowbot-post:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     env:
       TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
       TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
