@@ -14,11 +14,13 @@ botkrakow_token <- rtweet::create_token(
 )
 
 # pobranie ostatnich twitow (max 100)
-df <- get_timeline(user = "botkrakow", n=50, token = botkrakow_token)
+df <- get_timeline(user = "botkrakow", n=500, token = botkrakow_token)
 
 df_dzisiejsze <- df %>% 
-  filter(created_at >= ymd(Sys.Date(), tz="Europe/Warsaw")) %>%
-  select(user_id, status_id, created_at, text, favorite_count, retweet_count, followers_count, statuses_count) %>% 
+  unnest(ext_media_url) %>% 
+  # filter(created_at >= ymd(Sys.Date(), tz="Europe/Warsaw")) %>%
+  select(user_id, status_id, created_at, text, favorite_count, retweet_count, followers_count, statuses_count, 
+         ext_media_url) %>% 
   mutate_all(as.character)
 
 
@@ -35,17 +37,17 @@ log_data <- read_csv("./data/archiwum_twitow.csv",
                    col_types = cols(user_id = col_character(), 
                                     status_id = col_character(), created_at = col_character(),
                                     favorite_count = col_character(), retweet_count = col_character(),
-                                    followers_count = col_character(), statuses_count = col_character()))
+                                    followers_count = col_character(), statuses_count = col_character(),
+                                    ext_media_url = col_character()))
 
 # wybieram wiersze do archiwzacji
-# log_new_data <- df_dzisiejsze %>% 
-#   bind_rows(log_data) %>% 
-#   distinct(status_id, .keep_all = TRUE)
 
 log_new_data <- anti_join(df_dzisiejsze, log_data, by = "status_id")
 
 # dodanie do istniejącego loga na dysku nowych twitow
 
 write_csv(log_new_data,"./data/archiwum_twitow.csv",append = TRUE)
+# write_csv(df_dzisiejsze,"./data/archiwum_twitow.csv")
+
 
 
