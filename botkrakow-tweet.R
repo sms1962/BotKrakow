@@ -33,10 +33,13 @@ lat <- format(lat, scientific = FALSE)
 # Adres do MapBox API
 # https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/
 
+# adres z markerem 
+# https://api.mapbox.com/styles/v1/mapbox/light-v10/static/pin-l-marker+015(-87.0186,32.4055)/-87.0186,32.4055,14/500x300?access_token=pk.eyJ1Ijoic21zMTk2MiIsImEiOiJja25wdXUxNnUxczljMnZueGJrZGV5ZjA3In0.tDuvaUPax4YjwaltXy1s5g
+
 # po 600x400 dodany był @2x
 img_url <- paste0(
   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/",
-  paste0(lon, ",", lat),
+  paste0("pin-l-marker+015(",lon,",",lat,")/", lon, ",", lat),
   ",15,0/850x500?access_token=",
   Sys.getenv("MAPBOX_PUBLIC_ACCESS_TOKEN")
 )
@@ -48,7 +51,7 @@ download.file(img_url, temp_file)
 
 # Współrzędne punktu i adres do mapy w OpenStreetMaps
 
-latlon_details <- paste0("Jestem botem, który co ca. 30 min. wybiera losowo punkt w #Krakow.ie i pobiera zdjęcie satelitarne okolic. Poniżej pkt o współ.: ", lat, ",", lon, "\n", "Jeśli nie poznajesz, to zobacz na mapie. ",
+latlon_details <- paste0("Jestem botem, który co 1 h wybiera losowo punkt w #Krakow.ie, pobiera zdjęcie satelitarne. Poniżej pkt o współ.: ", lat, ", ", lon, " \n", "Nie poznajesz? Zobacz na mapie. ",
   "https://www.openstreetmap.org/#map=17/", lat, "/", lon, "/"
 )
 
